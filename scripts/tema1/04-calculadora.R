@@ -4,11 +4,13 @@
 
 2/3+5
 
+# Cociente entero
 2%/%3+5
 
+# Resto de diisión entera
 2%%3
 
-2^3*5
+2^3*5 # 40
 
 2^-4
 
@@ -37,17 +39,21 @@ Inf
 
 NA
 
-NaN
+NaN #Non a number
 
-5/0
+5/0 #Nan
 
-0/0
+0/0 # Nan
 
 2^50# = 1.1259e+15 = 1125900000000000 
 
 2 ^(-15) # 3.051758e-05 = 0.00003051758
 
-c(2^30, 2^(-15), 1, 2, 3/2)
+c(2^30, 2, 1, 2, 3/2) # 1073741824.0  2.0   1.0   2.0   1.5
+
+# Se necesitan dos números en notación científica para que los demás eestén en el mismo
+# formato
+c(2^30, 2^(-15), 1, 2, 3/2) #1.073742e+09 3.051758e-05 1.000000e+00 2.000000e+00 1.500000e+00
 
 
 sqrt(25)
@@ -69,6 +75,7 @@ factorial(4)
 
 factorial(0)
 
+# Coeficiente binomial
 choose(5, 3)
 
 choose(3,5)
@@ -95,32 +102,33 @@ asin(0.8660254) * 180 /pi #arc sin en grados
 
 asin(5) #arc sin x in [-1,1]
 
-acos(-8)
+acos(-8) #arc cos x in [-1,1]
 
 print(sqrt(2),10)
 round(sqrt(2), 3)
 floor(sqrt(2))
 ceiling(sqrt(2))
-trunc(sqrt(2))
+trunc(sqrt(2)) # Parte entera, eliminda la parte decimal
 
 sqrt(2)^2-2
 
-round(sqrt(2), 4)^2
+round(sqrt(2), 4)^2 # NO da el número exacto
 
 2^50
+# R solo asegura los decimales correctos hasta 16 dígitos.
 print(2^50, 15)
 print(2^50, 2)
-print(pi, 22)
+print(pi, 22) # Por pedir más de 16 dígitos, no da correctamente todos los dígitos,
 #3.141592653589793115998
 #3.141592653589793238462
 
-round(1.25,1)
+round(1.25,1) # En caso de empate, cuando acaba en 5, elige el decimal par más cercano, en general
 round(1.35,1)
 round(sqrt(2),0)
-round(sqrt(2))
+round(sqrt(2)) # POr default asume 0 dígitos, funcionado como la parte entera.
 
-round(digits = 5, sqrt(2))
-round(5, sqrt(2))
+round(digits = 5, sqrt(2)) # 1.41421
+round(5, sqrt(2)) # 5
 
 
 floor(-3.45)
@@ -139,7 +147,7 @@ z
 
 edad <- 30
 
-nombre = "Juan Gabriel"
+nombre = "Tony Mohu"
 
 HOLA = 1
 hola = 5
@@ -188,12 +196,15 @@ suma5 <- function(numero){
 
 suma5(3)
 
+# Ver variables creadas
 ls()
 
+# Remover variable
 rm(product)
 
 ls()
 
+# Remover todas las variables
 rm(list = ls())
 
 class(3+2i)
@@ -226,7 +237,7 @@ Mod(z1)
 #Argumento = arctan(Im(z)/Re(z))
 # = arccos(Re(z)/Mod(z))
 # = arcsin(Im(z)/Mod(z))
-# va de (-pi, pi]
+# va de (-pi, pi], es el ángulo
 Arg(-1+0i)
 Arg(-1-2i)
 #Conjugado = Re(z)- Im(z)i
