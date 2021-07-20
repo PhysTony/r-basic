@@ -1,0 +1,8 @@
+Aquí tenéis 3 links que os serán de utilidad a la hora de trabajar con Python. Echadles un ojo
+
+
+https://www.datacamp.com/community/data-science-cheatsheets
+
+https://github.com/ml874/Data-Science-Cheatsheet/blob/master/data-science-cheatsheet.pdf
+
+https://github.com/FavioVazquez/ds-cheatsheets

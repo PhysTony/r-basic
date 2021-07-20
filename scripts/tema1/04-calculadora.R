@@ -213,6 +213,8 @@ class(3+2i)
 
 (3+2i)*(-1+3i)
 
+# Cuando lso coeficientes de los números complejos son enteros, no es necesario
+# especificar que se tratan de números complejos con as.complex()
 (3+2i)/(-1+3i)
 
 #Esto es un error:
