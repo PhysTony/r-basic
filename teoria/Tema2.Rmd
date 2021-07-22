@@ -2,6 +2,8 @@
 title: Tema 2 - Documentación con R Markdown
 author: Juan Gabriel Gomila & María Santos
 output: 
+  beamer_presentation: 
+    keep_tex: yes
   ioslides_presentation:
     widescreen: true
     css: JB_style.css

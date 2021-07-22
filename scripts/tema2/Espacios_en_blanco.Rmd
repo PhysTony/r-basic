@@ -1,0 +1,12 @@
+---
+title: "Espacios en blanco"
+author: "Tony"
+date: "21/7/2021"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+## Espacios en blanco
+
+En en insitituto $\ \ \ \ \ $ nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte, $\ \ \ \ \ \ \ \ \ $ las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2 \ \ \ \ \ \ \ \ \ \ \ \ -4\alpha\gamma}}{2\alpha}$$.

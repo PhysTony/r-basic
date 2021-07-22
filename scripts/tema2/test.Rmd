@@ -1,0 +1,15 @@
+---
+title: "Test RMD"
+author: "Tony"
+date: "21/7/2021"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+## Test
+
+Esto es una prueba con Latex:
+$$
+\int_{0}^{1}x\ dx = \left.\frac{x^{2}}{2}\right|_{0}^{1}=\frac{1}{2}
+$$

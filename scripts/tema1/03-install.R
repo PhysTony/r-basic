@@ -11,5 +11,8 @@ library(magic)
 
 magic(6)
 
+install.packages("car", dep = TRUE)
+library(car)
+
 # Ver paquetes instalados
 installed.packages()
