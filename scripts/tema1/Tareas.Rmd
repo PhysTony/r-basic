@@ -1,0 +1,24 @@
+---
+title: "Tareas de R y Python"
+author: "Tony"
+output: pdf_document
+---
+
+## R:
+1. Si hubiéramos empezado a contar segundos a partir de las 12 campanadas que marcan el inicio de 2018, ¿a qué hora de qué día de qué año llegaríamos a los 250 millones de segundos? ¡Cuidado con los años bisiestos!
+2. Cread una función que os resuelva una ecuación de primer grado (de la forma $Ax+B=0$). Es decir, vosotros tendréis que introducir como parámetros los coeficientes (en orden) y la función os tiene que devolver la solución. Por ejemplo, si la ecuación es $2x+4=0$, vuestra función os tendría que devolver $-2$.
+Una vez creada la función, utilizadla para resolver las siguientes ecuaciones de primer grado:
+- $5x+3=0$.
+- $7x+4 = 18$.
+- $x+1 = 1$.
+3. Dad una expresión para calcular $3e-\pi$ y a continuación, dad el resultado que habéis obtenido con R redondeado a 3 cifras decimales.
+4. Dad el módulo del número complejo $\dfrac{(2+3i)^2}{5+8i}$ redondeado a 3 cifras decimales.
+
+## Python:
+1. Escribe una secuencia de instrucciones que permitan leer un número real por pantalla y que muestre si el número es positivo o no.
+2. Escribe una secuencia de instrucciones que permitan leer un número real por pantalla y que muestre si el número está en el rango entre -5 y 5.
+3. Escribe una secuencia de instrucciones que permitan leer las coordenadas de un punto $(x,y)$ e indique en cuál de los cuatro cuadrantes  se encuentra dicho punto.
+4. Escribe una secuencia de instrucciones que permitan leer dos números enteros y muestre el cociente de la división entera y el resto.
+5. Escribe una secuencia de instrucciones que permitan leer un número entero es cuadrado perfecto o no (piensa la mejor forma de hacerlo con lo que has aprendido hasta ahora).
+6. Escribe una expresión que permita determinar si un número entero positivo puede corresponder a un año bisiesto o no. Se consideran años bisiestos aquellos cuyo número es divisible por cuatro excepto los años que son múltiplos de 100, a no ser que lo sean de 400 (por ejemplo el año 2000 fue bisiesto pero el 2100 no lo será).
+7. Busca la imagen de un tablero de ajedrez en Google y fíjate en la nomenclatura de las casillas. Escribe una expresión lea una letra y un número de teclado correspondiente a una casilla de un tablero de ajedrez y nos indique si esta casilla es negra o blanca.

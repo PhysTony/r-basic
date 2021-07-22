@@ -1,0 +1,68 @@
+---
+title: "Matrices, sistemas de ecuaciones y funciones a trozos"
+author: "Tony"
+output: pdf_document
+---
+
+
+## Matrices
+
+- Sin paréntesis: `$$\begin{matrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{matrix}$$`
+\newline
+$$\begin{matrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{matrix}$$
+
+- Con paréntesis: `$$\begin{pmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{pmatrix}$$`
+\newline
+$$\begin{pmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{pmatrix}$$
+
+- Con corchete: `$$\begin{bmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}$$`
+\newline
+$$\begin{bmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}$$
+
+- Con barra vertical: `$$\begin{vmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{vmatrix}$$`
+\newline
+$$\begin{vmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{vmatrix}$$
+
+- Con llaves: `$$\begin{Bmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{Bmatrix}$$`
+\newline
+$$\begin{Bmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{Bmatrix}$$
+
+- Norma: `$$\begin{Vmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{Vmatrix}$$`
+\newline
+$$\begin{Vmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}
+\end{Vmatrix}$$

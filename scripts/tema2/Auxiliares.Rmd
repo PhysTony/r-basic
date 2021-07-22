@@ -1,0 +1,10 @@
+---
+title: "Auxilíares para Markdown"
+output: pdf_document
+---
+
+## Links:
+
+- [Guía rápida de Markdown](https://wordpress.com/support/markdown-quick-reference/)
+- [RMarkdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- [Símbolos](http://www.ptep-online.com/ctan/symbols.pdf)
