@@ -66,3 +66,60 @@ $$\begin{Vmatrix}
 a_{11} & a_{12} & a_{13}\\
 a_{21} & a_{22} & a_{23}
 \end{Vmatrix}$$
+
+
+## Sistemas de ecuaciones
+
+`\begin{array}{l}\end{array}` nos produce una tabla alineada a la izquierda, con `{r}` alínea a la derecha.
+`$$\left.
+\begin{array}{l}
+ax+by=c\\
+ex-fy=g
+\end{array}
+\right\}
+$$`
+\newline
+$$\left.
+\begin{array}{l}
+ax+by=c\\
+ex-fy=g
+\end{array}
+\right\}
+$$
+
+### Funciones a trozos
+Se usarán dos columnas separadas por $\&$
+
+- Izquierda-derecha:
+`$$|x|=\left\{
+\begin{array}{lr}
+-x & \text{si }x\le 0\\
+x & \text{si }x\ge 0
+\end{array}
+\right.
+$$`
+\newline
+$$|x|=\left\{
+\begin{array}{lr}
+-x & \text{si }x\le 0\\
+x & \text{si }x\ge 0
+\end{array}
+\right.
+$$
+
+- Derecha-derecha:
+`$$|x|=\left\{
+\begin{array}{rr}
+-x & \text{si }x\le 0\\
+x & \text{si }x\ge 0
+\end{array}
+\right.
+$$`
+\newline
+$$|x|=\left\{
+\begin{array}{rr}
+-x & \text{si }x\le 0\\
+x & \text{si }x\ge 0
+\end{array}
+\right.
+$$

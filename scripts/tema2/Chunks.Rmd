@@ -1,0 +1,22 @@
+---
+title: "Chunks en R"
+author: "Tony"
+output: pdf_document
+---
+
+## R Markdown
+
+Chunk: Bloque de código.
+\newline
+Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente: Se abren tres comillas $`$, luego, entre corchetes $\{\}$ se escribe el lenguaje; después el código y se finaliza con otras tres comillas $`$.
+`\ `\ `{r}
+x = 1+1
+x
+`\ `\ `
+
+
+que resulta en
+
+```{r}
+sqrt(2)-exp(-2)
+```
