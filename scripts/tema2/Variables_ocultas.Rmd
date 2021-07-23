@@ -1,5 +1,5 @@
 ---
-title: "Chunk y Variables"
+title: "Variables ocultas"
 author: "Tony"
 output: pdf_document
 ---
@@ -8,7 +8,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Variables ocultas en R Markdown
 
 Podemos ejecutar la siguientes variables, pero omitirlas (con \textbf{echo=FALSE, result='hide'}) en el mensaje de ejecución y usarlas más adelante:
 

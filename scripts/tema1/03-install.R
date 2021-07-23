@@ -14,5 +14,12 @@ magic(6)
 install.packages("car", dep = TRUE)
 library(car)
 
+# Python en R:
+install.packages('reticulate', dep = TRUE)
+library(reticulate)
+
+install.packages('Matrix', dep = TRUE)
+library(Matrix)
+
 # Ver paquetes instalados
 installed.packages()
