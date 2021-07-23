@@ -8,8 +8,7 @@ output: pdf_document
 
 Chunk: Bloque de código.
 \newline
-Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente: Se abren tres comillas $`$, luego, entre corchetes $\{\}$ se escribe el lenguaje; después el código y se finaliza con otras tres comillas $`$.
-<img src="pic_trulli.jpg" alt="Italian Trulli">
+Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente: Se abren tres comillas $`$, luego, entre corchetes $\{\}$ se escribe el lenguaje; después el código y se finaliza con otras tres comillas $`$,
 que resulta en
 
 ```{r}
@@ -92,9 +91,9 @@ Se encarga de darle formato al mensaje del código evaluado por R de acouerdo a 
 - \textbf{markup}: Es el valor por defecto, muestra los resultados en el documento final linea a linea, encabezados por $\#\#$. \textbf{\{r MiPrimerChunk, echo=TRUE, results='markup'\}}.
 - \textbf{hide}: No se nos muestra el resultado en el documento final, pero sí se evalua el código, a diferencia de \textbf{eval}, el cual no necesariamente ejecuta el código. \textbf{\{r MiPrimerChunk, echo=TRUE, results='hide'\}}.
 - \textbf{asis}: Devuelve de manera literal los resultados linea a linea en el documento final y el programa con el que se abre el documento final los interpreta como texto y formatea adecuadamente. \textbf{\{r MiPrimerChunk, echo=TRUE, results='asis'\}}.
-- \textbf{hold}: Muestra todos los resultados al final del bloque de código. \textbf{\{r MiPrimerChunk, echo=TRUE, results='hold'\}}.
+- \textbf{\text{hold}}: Muestra todos los resultados al final del bloque de código. \textbf{\{r MiPrimerChunk, echo=TRUE, results='hold'\}}.
 
-Ejemplos:
+**Ejemplos:**
 
 - \textbf{markup}:
 ```{r MiPrimerChunk11, echo=TRUE, results='markup'}
@@ -115,9 +114,28 @@ sec
 cumsum(sec)
 ```
 
-- \textbf{'hold'}:
+- \textbf{\text{hold}}:
 ```{r MiPrimerChunk14, echo=TRUE, results='hold'}
 sec=10:20
 sec
 cumsum(sec)
 ```
+
+**En cualquier chunk podemos usar en conjunto los distintos parámetros vistos anteriormente.**
+
+## Chunk en linea
+
+Para introducir una parte de código dentro de un párrafo y que se ejecute al comilarse el documento mostrando así el resultado final, hay que hacerlo utilizando abriendo una comilla, $`$, al inicio y al final del chunk; seguida de la primera comilla se indica el lenguaje: $`\text{r codigo}`$
+
+**Ejemplos:**
+
+
+  - En \LaTeX: $\sqrt{2}$
+  - En `R` haciendo `r sqrt(2)`
+  - La frase completa: $\sqrt{2}=$ `r sqrt(2)`.
+\newline
+- El número $\pi$ empieza por `r round(pi,5)`.
+
+- La raíz cuadrada de 64 es `r sqrt(64)` o, lo que viene siendo lo mismo, $\sqrt{64}=$ `r sqrt(64)`.
+
+- La raíz quinta de 32 es `r 32^(1/5)` o, lo que viene siendo lo mismo, $\sqrt[5]{64}=$ `r `32^(1/5)`.

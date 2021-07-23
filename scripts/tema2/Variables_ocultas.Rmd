@@ -1,0 +1,27 @@
+---
+title: "Chunk y Variables"
+author: "Tony"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Podemos ejecutar la siguientes variables, pero omitirlas (con \textbf{echo=FALSE, result='hide'}) en el mensaje de ejecución y usarlas más adelante:
+
+- notas = c(3,5,7,7,9,10)
+- media =mean(notas)
+- n = length(notas)
+- desv.tip = sd(notas)
+
+```{r, echo=FALSE, results='hide'}
+notas = c(3,5,7,7,9,10)
+media =mean(notas)
+n = length(notas)
+desv.tip = sd(notas)
+```
+
+Este año h e hecho $n=$ `r n` exámenes, con una media $\overline{x}=$ `r media` y una desviación estándar típica de $s=$ `r desv.tip`.
