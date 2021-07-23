@@ -4,19 +4,120 @@ author: "Tony"
 output: pdf_document
 ---
 
-## R Markdown
+## Chunks
 
 Chunk: Bloque de código.
 \newline
 Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente: Se abren tres comillas $`$, luego, entre corchetes $\{\}$ se escribe el lenguaje; después el código y se finaliza con otras tres comillas $`$.
-`\ `\ `{r}
-x = 1+1
-x
-`\ `\ `
-
-
+<img src="pic_trulli.jpg" alt="Italian Trulli">
 que resulta en
 
 ```{r}
 sqrt(2)-exp(-2)
+```
+Vamos a calcular $\sqrt{2}-e^{-2}$:
+```{r}
+sqrt(2)-exp(-2)
+```
+## Etiquetas en chunks
+Podemos etiquetar el chunk con algún nombre después del lenguaje indicado en los corchetes como \textbf{\{r MiPrimerChunk\}}. NO se pueden repetir las etiquetas o labels ya que R marcará error.
+```{r MiPrimerChunk1}
+sqrt(2)-exp(-2)
+```
+
+## Parámetros de los chunks
+
+### echo:
+Con `TRUE` se muestra el código fuente, con `FALSE` no. \textbf{\{r MiPrimerChunk, echo=TRUE\}}:
+
+- `TRUE`:
+```{r MiPrimerChunk2, echo=TRUE}
+sqrt(2)-exp(-2)
+```
+- `FALSE`:
+```{r MiPrimerChunk3, echo=FALSE}
+sqrt(2)-exp(-2)
+```
+
+### eval:
+Con `TRUE` se evalua el código fuente, con `FALSE` no. \textbf{\{r MiPrimerChunk, echo=TRUE, eval=TRUE\}}:
+
+- `TRUE`:
+```{r MiPrimerChunk4, echo=TRUE, eval=TRUE}
+sqrt(2)-exp(-2)
+```
+- `FALSE`:
+```{r MiPrimerChunk5, echo=FALSE, eval=FALSE}
+sqrt(2)-exp(-2)
+```
+\textbf{\{r MiPrimerChunk, eval=TRUE\}}:
+
+- `TRUE`:
+```{r MiPrimerChunk6, eval=TRUE}
+sqrt(2)-exp(-2)
+```
+- `FALSE`:
+```{r MiPrimerChunk7, eval=FALSE}
+sqrt(2)-exp(-2)
+```
+
+### message:
+Con `TRUE` se muestran los mensajes que R produce al ejecutar el código fuente, con `FALSE` no. \textbf{\{r MiPrimerChunk, message=TRUE\}}:
+
+- `TRUE`:
+```{r MiPrimerChunk8, message=TRUE}
+library(magic)
+magic(6)
+```
+- `FALSE`:
+```{r MiPrimerChunk9, message=FALSE}
+library(magic)
+magic(6)
+```
+
+### warning:
+Con `TRUE` se muestran los mensajes de advertencia que R produce al ejecutar el código fuente, con `FALSE` no. \textbf{\{r MiPrimerChunk, warning=TRUE\}}.
+
+### comment:
+Con `NA` se omiten los $\#\#$ en los mensajes que R produce al ejecutar el código fuente, con `FALSE` no. \textbf{\{r MiPrimerChunk, comment=NA\}}:
+
+```{r MiPrimerChunk10, comment=NA}
+library(magic)
+magic(6)
+```
+
+### result:
+Se encarga de darle formato al mensaje del código evaluado por R de acouerdo a la opción escogida. \textbf{\{r MiPrimerChunk, echo=TRUE, results='option'\}}:
+
+- \textbf{markup}: Es el valor por defecto, muestra los resultados en el documento final linea a linea, encabezados por $\#\#$. \textbf{\{r MiPrimerChunk, echo=TRUE, results='markup'\}}.
+- \textbf{hide}: No se nos muestra el resultado en el documento final, pero sí se evalua el código, a diferencia de \textbf{eval}, el cual no necesariamente ejecuta el código. \textbf{\{r MiPrimerChunk, echo=TRUE, results='hide'\}}.
+- \textbf{asis}: Devuelve de manera literal los resultados linea a linea en el documento final y el programa con el que se abre el documento final los interpreta como texto y formatea adecuadamente. \textbf{\{r MiPrimerChunk, echo=TRUE, results='asis'\}}.
+- \textbf{hold}: Muestra todos los resultados al final del bloque de código. \textbf{\{r MiPrimerChunk, echo=TRUE, results='hold'\}}.
+
+Ejemplos:
+
+- \textbf{markup}:
+```{r MiPrimerChunk11, echo=TRUE, results='markup'}
+sec=10:20
+sec
+cumsum(sec)
+```
+- \textbf{hide}:
+```{r MiPrimerChunk12, echo=TRUE, results='hide'}
+sec=10:20
+sec
+cumsum(sec)
+```
+- \textbf{asis}:
+```{r MiPrimerChunk13, echo=TRUE, results='asis'}
+sec=10:20
+sec
+cumsum(sec)
+```
+
+- \textbf{'hold'}:
+```{r MiPrimerChunk14, echo=TRUE, results='hold'}
+sec=10:20
+sec
+cumsum(sec)
 ```
