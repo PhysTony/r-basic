@@ -1,0 +1,72 @@
+---
+title: "Progresiones aritméticas y sequencias"
+author: "Tony"
+date: "24/7/2021"
+output: html_document
+---
+
+## Progresiones y Secuencias
+
+Una progresión aritmética es una sucesión de números tales que la **diferencia**, $d$, de cualquier par de términos sucesivos de la secuencia es constante.
+$$a_n = a_1 + (n-1)\cdot d$$
+
+- ``seq(a,b,by=d)``: para generar una [progresión aritmética](https://es.wikipedia.org/wiki/Progresión_aritmética) de diferencia $d$ que empieza en $a$ hasta llegar a $b$
+- ```seq(a,b, length.out=n)```: define progresión aritmética de longitud $n$ que va de $a$ a $b$ con diferencia $d$. Por tanto $d=(b-a)/(n-1)$
+- ```seq(a,by=d, length.out=n)```: define la progresión aritmética de longitud $n$ y diferencia $d$ que empieza en $a$
+- ```a:b```: define la secuencia de números **enteros** ($\mathbb{Z}$) consecutivos entre dos números $a$ y $b$
+
+**Ejemplos:**
+```{r}
+# 1. Una secuencia de un mismo vector, repitiendolo 5 veces:
+rep(c(1,2,3),5)
+# 2. Secuencia del 5 al 60 en incrementos de 5:
+seq(5,60, by=5)
+# 3. Secuencia del 5 al 60 en incrementos de 2.5:
+seq(5,60, by=2.5)
+# 4. Secuencia del 5 al 60 en incrementos de 3.5, en este caso, el último número de la secuencia es el último número menor a 60: 57.5, no 61:
+seq(5,60, by=3.5)
+# 5. Secuencia del 100 al 6 en decrementos de 9:
+seq(100,6, by=-9)
+# 6. Secuencua de 7 términos equidistantes del 4 al 35:
+seq(4,35, length.out=7)
+# 7. Secuencia de 7 términos equidistantes en incrementos de 3 que inicia desde el 5:
+seq(5, length.out=7, by=3)
+# 8. Secuencia del 1 al 10 en incrementos de 1:
+1:10
+# 9. Secuencia del 30 al -6 en decrementos de una unidad:
+30:-6
+# 10. Secuencia del -2 al 5:
+-2:5
+# 11. Secuencia del 2 al 5 y con todas las entradas negativas:
+-(2:5)
+```
+
+## Concatenar vectores
+
+La función de concatenación ```c()``` también puede concatenar vectores:
+```{r}
+x <- c(rep(pi, 5), 5:10, -7)
+x
+```
+Se puede concatenar cuantas veces se desee
+```{r}
+c(0, x, 10, x, 20)
+```
+Se puede modificar cualquier entrada con ```fix()```
+
+**Ejercicio**
+
+- Imprimir los números del 1 al 20
+```{r}
+1:20
+```
+- Imprimir los 20 primeros números pares
+```{r}
+seq(0,20, by=2)
+```
+
+- Imprimir 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
+```{r}
+round(seq(17,90, length.out=30), 4)
+```
+
