@@ -1,0 +1,122 @@
+---
+title: "Funciones y vectores"
+author: "Tony"
+date: "24/7/2021"
+output: html_document
+---
+
+## Funciones
+
+Cuando queremos aplicar una función a cada uno de los elementos de un vector de datos, la función `sapply` nos ahorra tener que programar con bucles en `R`:
+
+**Ejemplos**
+Operaciones básicas con vectores
+```{r}
+x <- c(4,6,2,6,2,8,6,10,3,7)
+y <- 1:10
+# Sumar una constante a cada entrada de un vector
+x+pi
+# Multiplicar cada entrada por una constante
+x*pi
+# Obtener la raíz cuadrada de cada entrada
+sqrt(x)
+# Elevar 2 a la potencia de cada entrada del vector
+2^y
+# Elevar cada entrada del vector al cuadrado
+y^2
+# Suma de vectores entrada por entrada
+x+y
+# Multiplicación de vectores entrada por entrada
+x*y
+# Elevar cada entrada de un vector a la potencia dada por cada una de las entradas de otro vector, haciendolo entrada por entrada
+y^x
+# Otro ejemplo
+n=1:10
+w = n^2/(n^2+1)
+```
+
+Dado un vector de datos $x$ podemos calcular muchas medidas estadísticas acerca del mismo: 
+
+- ```length(x)```: calcula la longitud del vector $x$.
+- ```max(x)```: calcula el máximo del vector $x$.
+- ```min(x)```: calcula el mínimo del vector $x$.
+- ```sum(x)```: calcula la suma de las entradas del vector $x$.
+- ```prod(x)```: calcula el producto de las entradas del vector $x$.
+- ```mean(x)```: calcula la media aritmética de las entradas del vector $x$.
+- ```diff(x)```: calcula el vector formado por las diferencias sucesivas entre entradas del vector original $x$.
+- ```cumsum(x)```: calcula el vector formado por las sumas acumuladas de las entradas del vector original $x$.
+	- Permite definir sucesiones descritas mediante sumatorios
+	- Cada entrada de ``cumsum(x)`` es la suma de las entradas de $x$ hasta su posición.
+
+**Ejemplos:**
+```{r}
+length(x)
+max(x)
+min(x)
+prod(x)
+mean(x)
+diff(x)
+cumsum(x)
+cummax(x)
+cummin(x)
+cumprod(x)
+diff(cumsum(x))
+```
+
+- ```sapply(nombre_de_vector,FUN=nombre_de_función)```: para aplicar dicha función a todos los elementos del vector
+- ```sqrt(x)```: calcula un nuevo vector con las raíces cuadradas de cada uno de los elementos del vector $x$
+
+**EJemplos:**
+```{r}
+# Elevar al cuadrado cada entrada de x
+sapply(x, FUN=function(elemento){sqrt(elemento)})
+# Análogamente con una función predefinida
+cd = function(x){summary(lm((1:4)~c(1:3,x)))$r.squared}
+cd(5)
+cd(6)
+# Si intentamos hacer lo siguiente, marcará aerror ya que la función solo se puede aplicar a escalares
+# cd(x)
+# Esto no ocurre con la función sapply
+sapply(x, FUN=cd)
+# Manipulando valores de una función de un vector
+cuadrado = function(x){x^2}
+v = c(1,2,3,4,5,6)
+sapply(v, FUN = cuadrado)
+mean(v)
+cumsum(v)
+# Con x
+sapply(x, FUN = cuadrado)
+```
+
+
+## Orden
+
+- ```sort(x)```: ordena el vector en orden natural de los objetos que lo forman: el orden numérico creciente, orden alfabético...
+- ```rev(x)```: invierte el orden de los elementos del vector $x$
+
+```{r}
+v = c(1,7,5,2,4,6,3)
+sort(v)
+sort(v, decreasing = TRUE)
+rev(v)
+```
+
+## Ejercicios
+
+- Combinar las dos funciones anteriores, `sort` y `rev` para crear una función que dado un vector $x$ lo devuelva ordenado en orden decreciente.
+```{r}
+y
+func1 = function(x){rev(sort(x))}
+func1(y)
+```
+
+- Razonar si aplicar primero `sort` y luego `rev` a un vector $x$ daría en general el mismo resultado que aplicar primero `rev` y luego `sort`.
+```{r}
+# No porque al aplica rpriemro rev no ordenaría las entradas, así que quedarán en orden creciente al aplicar la función sort al último
+sort(rev(y))
+```
+
+- Investigad la documentación de la función `sort` (recordad que podéis usar la sintaxis `?sort` en la consola) para leer si cambiando algún argumento de la misma podéis obtener el mismo resultado que habéis programado en el primer ejercicio.
+```{r}
+sort(rev(y), decreasing = TRUE)
+```
