@@ -9,8 +9,9 @@ output: pdf_document
 Chunk: Bloque de código.
 \newline
 Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente: Se abren tres comillas $`$, luego, entre corchetes $\{\}$ se escribe el lenguaje; después el código y se finaliza con otras tres comillas $`$,
-que resulta en
+que resulta en $```\{r\} \ \ \ \text{ código} ```$
 
+**Ejemplo:**
 ```{r}
 sqrt(2)-exp(-2)
 ```
@@ -128,7 +129,6 @@ cumsum(sec)
 Para introducir una parte de código dentro de un párrafo y que se ejecute al comilarse el documento mostrando así el resultado final, hay que hacerlo utilizando abriendo una comilla, $`$, al inicio y al final del chunk; seguida de la primera comilla se indica el lenguaje: $`\text{r codigo}`$
 
 **Ejemplos:**
-
 
   - En \LaTeX: $\sqrt{2}$
   - En `R` haciendo `r sqrt(2)`

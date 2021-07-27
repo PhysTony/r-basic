@@ -1,0 +1,38 @@
+---
+title: "Binomio de Newton"
+author: "Tony"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Producto notable
+
+La fórmula del producto notable es
+$$
+(a+b)^2 = a^2 + 2ab + b^2
+$$
+
+En R sería:
+```{r}
+binomioNewton2 = function(a,b){
+  a^2 + 2*a*b + b^2
+}
+binomioNewton2(3,4)
+binomioNewton2(4,3)
+```
+
+## Binomio de Newton
+
+$$
+(a+b)^n = \sum_{k=0}^{n} {n \choose k} \cdot a^{n-k} \cdot b^k = {n \choose 0} \cdot a^{n} \cdot b^0 + \cdots + {n \choose n} \cdot a^{0} \cdot b^n
+$$
+
+Así
+```{r}
+binomioNewton = function(a,b,n){
+  cumsum(choose(n,(0:n))*a^{n-(0:n)}*b^(0:n))[n+1]
+}
+binomioNewton(1,2,2)
+```
+

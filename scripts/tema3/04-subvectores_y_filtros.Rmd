@@ -1,0 +1,157 @@
+---
+title: "Subvectores y filtros"
+author: "Tony"
+output: html_document
+---
+
+## Subvectores
+
+Son porsiones de un vecotr, estas pueden ser un vector o un escalar.
+
+- ```vector[i]```: da la $i$-ésima entrada del vector
+
+	- Los índices en R empiezan en 1
+	- ```vector[length(vector)]```: nos da la última entrada del vector
+	- ```vector[a:b]```: si $a$ y $b$ son dos números naturales, nos da el subvector con las entradas del vector original que van de la posición $a$-ésima hasta la $b$-ésima.
+	- ```vector[-i]```: si $i$ es un número, este subvector está formado por todas las entradas del vector original menos la entrada $i$-ésima. Si $i$ resulta ser un vector, entonces es un vector de índices y crea un nuevo vector con las entradas del vector original,cuyos índices pertenecen a $i$
+	- ```vector[-x]```: si $x$ es un vector (de índices), entonces este es el complementario de vector[$x$]
+	
+```{r}
+x <- seq(3, 50, by=3.5)
+x
+# La tarcera entrada del vector x
+x[3]
+# La octava entrada del vector x
+x[8]
+# Última entrada del vector x
+x[length(x)]
+# Penúltima entrada del vector x
+x[length(x)-1]
+# Antepenúltima entrada del vector x
+x[length(x)-2]
+# Mostrar todas las entradas del vector x, excepto la 3
+x[-3]
+# De la cuarta a la otavava entrada del vector x
+x[4:8]
+# De la octava a la cuarta entrada del vector x
+x[8:4]
+# De la cuarta a la otavava entrada del vector x
+x[4:8]
+# Mostrar la entradas de índice par del vector x
+seq(2, length(x), by=2)
+
+# Mostrar la entradas de índice impar del vector x
+seq(1, length(x), by=2)
+x[seq(1, length(x), by=2)]
+# Lo anterior es equivalente a quitar las entradas pares
+x[-seq(2, length(x), by=2)]
+# La importancia de usar los paréntesis
+length(x)-3
+x[(length(x)-3):length(x)]
+x[length(x)-3:length(x)]
+# Entradas 1, 5 y 6
+x[c(1,5,6)]
+```
+
+## Filtros condicionales
+
+- También podemos utilizar operadores lógicos:
+	
+	- ```==```: =
+	- ```!=```: $\neq$
+	- ```>=```: $\ge$  
+	- ```<=```: $\le$
+	- ```<```: $<$
+	- ```>```: $>$
+	- ```!```: NO lógico
+	- ```&```: Y lógico
+	- ```|```: O lógico
+	
+```{r}
+# Las entradas cuyo valor asociado es mayor a 30
+x[x>30]
+# Las entradas cuyo valor asociado es mayor a 20 y menor a 40
+x[x>20 & x<40]
+# Las entradas cuyo valor asociado es diferente a 3 y 17
+x[x!=3 & x!=17]
+# Las entradas cuyo valor asociado es mayor a 40 o menor igual a 10
+x[x>40 | x<=10]
+# Las entradas módulo 2 igual a 0 (entradas de valor par)
+x[x%%2==0]
+# Las entradas módulo 2 igual a 1 (entradas de valor impar)
+x[x%%2==1]
+```
+	
+	Veamos que las condiciones para filtrar solo tienen valores booleanos
+```{r}
+x>30
+x[x>30]
+```
+	 También se puede filtrar de acuerdo al valor de otros vectores distintos al que se filtrará
+```{r}
+x=c(1,7,4,2,4,8,9,2,0)
+y=c(5,2,-3,-7,-1,4,-2,7,1)
+x
+y
+x[y>0]
+
+```
+
+	
+## Condicionales
+
+- ```which(x cumple condición)```: para obtener los índices de las entradas del vector $x$ que satisfacen la condición dada
+- ```which.min(x)```: nos da la primera posición en la que el vector $x$ toma su valor mínimo
+- ```which(x==min(x))```: da todas las posiciones en las que el vector $x$ toma sus valores mínimos
+- ```which.max(x)```: nos da la primera posición en la que el vector $x$ toma su valor máximo
+- ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
+
+```{r}
+x=c(1,9,4,2,4,8,9,2,0)
+# índices del vector x cuyo valor asociado es mayor que 4
+which(x>4)
+# Con lo anterior, se pueden filtrar las entradas que satisfagan la condición x>4
+x[which(x>4)]
+# índices del vector x cuyo valor asociado cumple x>2 y x<8
+which(x>2 & x<8)
+# índices del vector x cuyo valor asociado cumple x<5 o x%%2==0
+which(x<5 | x%%2==0)
+# índices del vector x cuyo valor asociado es mayor que 4
+which.max(x)
+# índices del vector x cuyo valor asociado es mayor que 4
+which(x==min(x))
+# índices del vector x cuyo valor asociado es mayor que 4
+which.max(x)
+which(x==max(x))
+```
+
+## Valores NULL
+
+El valor arrojado cuando ninguna entrada del vector satisface ninguna condición dependerá del tipo de datos que contenga el vector
+```{r}
+# Ejemplo 1
+x[x>4 & x<7]
+# Tipo de dato
+typeof(x[x>4 & x<7])
+which(x>4 & x<7)
+# Ejemplo 2
+# Tipo de dato
+typeof(which(x>4 & x<7))
+```
+
+
+Son los valores mostrados cuando no hay valores contenidos en alguna variable
+```{r}
+x = c()
+x
+y = NULL
+y
+```
+
+Las entradas de los vectores que sean de tipo ```NULL``` no se muestran
+```{r}
+z = c(x,1,y,2)
+z
+```
+
+

@@ -66,7 +66,7 @@ diff(cumsum(x))
 - ```sapply(nombre_de_vector,FUN=nombre_de_función)```: para aplicar dicha función a todos los elementos del vector
 - ```sqrt(x)```: calcula un nuevo vector con las raíces cuadradas de cada uno de los elementos del vector $x$
 
-**EJemplos:**
+**Ejemplos:**
 ```{r}
 # Elevar al cuadrado cada entrada de x
 sapply(x, FUN=function(elemento){sqrt(elemento)})
