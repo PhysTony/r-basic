@@ -1,0 +1,131 @@
+---
+title: "Cambiar entradas y valores NA"
+author: "Tony"
+output: html_document
+---
+
+
+## Cambiar entradas de un vector
+
+Se pueden cambiar las entradas de algún vector de distintas maneras: Una en específico o las que cumplan cierta condición.
+```{r}
+x <- 1:10
+x
+# Cambiemos la tercera entrada
+x[3]=434
+x
+# CAmbiemos las entradas de la 2 a la 5
+x[2:5]=0
+x
+# Otro ejemplod el caso anterior
+x[2:5] = x[2:5] + 3
+x
+# CAmbiemos las entradas que sean menores a 7
+x[x<7]=2
+x
+```
+
+## Valores NA
+
+**NA** es el acrónimo de *Not Available*, no es un valor como tal, sino un concepto que aparece cuando un valor no está disponible. Veamos que pasa cuando queremos accesar a la entrada de un vector que no está definida:
+```{r}
+x[11]
+```
+Aparece **NA**. Sin embargo, podemos darle un valor a una entrada que aún no está definida
+```{r}
+x[11]=3
+x
+# También se puede modificar comoe l resto de las entradas
+x[(length(x)-2):length(x)]=0
+x
+# También se le puede dar valor a cualquier entrada no definida
+x[length(x)+5]=3
+x
+```
+Como solo definimos la entrada 11 y 15, pero no las entradas entre estos índices, se les asocia el valor **NA**.
+
+## Problemas con valores NA
+
+El problema que genera un vector que contiene valores **NA** es que muchas funciones arrojarán **NA**, a menos que se le indique que se le remuevan con el parámetro `na.rm=TRUE` o indicando con un filtro que solo se trabajen con los valores distintos de **NA**.
+```{r}
+sum(x)
+cumsum(x)
+prod(x)
+mean(x)
+```
+ Con el parámetro `na.rm=TRUE` opera sobre los valores que no son **NA**:
+```{r}
+sum(x, na.rm = TRUE)
+mean(x, na.rm = TRUE)
+```
+Puesto que **NA** no es valor como tal, sino un concepto, la función `which()` no podrá obtener las entradas que tienen un valor **NA**:
+```{r}
+which(x==NA)
+```
+ 
+### Función is.na()
+
+La función `is.na()` retorna un valor booleano asociado a cada entrada del vector y será `TRUE` cuando el valor asociado del vector sea **NA**.
+```{r}
+is.na(x)
+```
+  Con esta función se pueden obtener los índices asociados a los valores **NA**.
+```{r}
+which(is.na(x))
+x[which(is.na(x))]
+```
+### Sustitución de valores NA
+
+Uno de los métodos para sustituir valores **NA** es sustituyendolos con la media de los valores del vector distintos a **NA**
+```{r}
+# Creemos una copia del vector para ocnservar el orginal
+y = x
+y
+y[is.na(y)]=mean(y, na.rm=TRUE)
+y
+# El vector original está intacto
+x[is.na(x)]
+```
+
+### Alternativa para filtrar valores NA
+
+Negando `is.na()` también se pueden usar las funciones anteriormente mostradas:
+```{r}
+x
+x[!is.na(x)]
+sum(x[!is.na(x)])
+```
+Notemos que `na.rm=TRUE` no siempre funciona, pero el filtor anterior sí:
+```{r}
+x
+cumsum(x[!is.na(x)])
+# cumsum(x, na.rm=TRUE)
+# Error in cumsum(x, na.rm = TRUE) : 
+# 2 arguments passed to 'cumsum' which requires 1
+```
+
+### Quitar atributos
+
+Se pueden omitir, aunque no es recomendable, los valores **NA** de la siguiente manera:
+```{r}
+x
+na.omit(x)
+```
+También se puede filtrar con dicho parámetro:
+```{r}
+sum(na.omit(x))
+cumsum(na.omit(x))
+mean(na.omit(x))
+```
+
+Si no se desea que aparezcan los mensajes de atributo `attr()`se puede trabajar ocn una copia y cambiarle los atributos:
+```{r}
+x_clean = na.omit(x)
+x_clean
+attr(x_clean, "na.action")=NULL
+x_clean
+" En caso de que aparezca todavía attr(,class)"
+attr(x_clean, "class")=NULL
+x_clean
+```
+
