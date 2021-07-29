@@ -1,0 +1,67 @@
+---
+title: "Listas"
+author: "Tony"
+output: html_document
+---
+
+## List
+
+<l class="definition">List.</l> Lista formada por diferentes objetos, no necesariamente del mismo tipo, cada cual con un nombre interno
+
+- `list(...)`: función que crea una list
+    - Para obtener una componente concreta usamos la instrucción `list$componente`
+    - También podemos indicar el objeto por su posición usando dobles corchetes: `list[[i]]`. Lo que obtendremos es una list formada por esa única componente, no el objeto que forma la componente
+
+Creemos una lista y accedamos a sus componentes:
+```{r}
+# Creemos un vector para construir la lista:
+x = c(1,5,-2,6,-7,-8,3,4,-9)
+x
+# Creemos la lista, notemos que contiene distintos tipos de valores almacenados:
+L = list(nombre = "temperaturas", datos = x, media = mean(x), sumas = cumsum(x))
+L
+# Podemos obtener individualmente cada entrada de la lista como un vector de manera individual de dos maneras:
+L$nombre
+L[[1]]
+L$datos
+L[[2]]
+L$media
+L[[3]]
+L$sumas
+L[[4]]
+# De esta manera podemos operar con dichos valores:
+3*L$media
+# Podemos imprimir parámetros específicos de la lista, los cuales no pueden ser operados como vectores, sino como lista:
+L[1]
+L[2]
+L[3]
+L[4]
+```
+
+
+## Obtener información de una list
+
+- `str(list)`: para conocer la estructura interna de una list
+- `names(list)`: para saber los nombres de la lista
+
+Apliquémoslo a la lista anterior:
+```{r}
+# Nombres de los parámetros de la lista:
+names(L)
+# Estructura de la lista:
+str(L)
+# Se aprecia si el parámetro tiene asociado un vector, su longitud y tipo de datos que contiene.
+```
+
+
+## Modelos de regresión lineal
+
+Veamos que hay funciones que regresan una lista donde cada parámetro contiene informaicón.
+```{r}
+reg <- lm(c(1,2,3,4)~c(1,2,3,6))
+summary(reg)
+# AHora accedamos a uno de sus parámetros:
+reg$coefficients
+```
+
+```
