@@ -1,0 +1,130 @@
+---
+title: "Tarea 4"
+author: "Tony"
+date: "29/7/2021"
+output: html_document
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+```{r}
+# Librerías
+library(stringi)
+library(stringr)
+```
+
+
+1. Realizar los siguientes productos de matrices en R:
+$$A \cdot B$$
+$$B \cdot A$$
+$$(A \cdot B)^{t}$$
+$$B^{t} \cdot A$$
+$$(A \cdot B)^{-1}$$
+$$A^{-1} \cdot B^{t}$$
+donde:
+$$ A = \begin{equation*}
+  \begin{pmatrix}
+  1 & 2 & 3 & 4\\
+  4 & 3 & 2 & 1\\
+  0 & 1 & 0 & 2 \\
+  3 & 0 & 4 & 0
+  \end{pmatrix}
+\end{equation*}$$
+
+$$ B = \begin{equation*}
+  \begin{pmatrix}
+  4 & 3 & 2 & 1\\ 
+  0 & 3 & 0 & 4\\ 
+  1 & 2 & 3 & 4 \\ 
+  0 & 1 & 0 & 2
+  \end{pmatrix}
+\end{equation*}$$.
+**Solución:** Primero, definamos y mostremos las matrices $A$ y $B$.
+```{r}
+A <- matrix(c(1,4,0,3, 2,3,1,0, 3,2,0,4, 4,1,2,0), nrow = 4)
+A
+B <- matrix(c(4,0,1,0, 3,3,2,1, 2,0,3,0, 1,4,4,2), nrow = 4)
+B
+```
+Notemos que hay un producto que se repite maś de una vez, por lo cual conviene definir una variable que lo contenga, por comodidad.
+
+- $A \cdot B$:
+```{r}
+p <- A%*%B
+p
+```
+- $B \cdot A$:
+```{r}
+B%*%A
+```
+- $(A \cdot B)^{t}$:
+```{r}
+t(p)
+```
+- $B^{t}\cdot A$:
+```{r}
+t(B)%*%A
+```
+- $(A \cdot B)^{-1}$: Recordemos que hallar la matriz inversa es equivalente a hallar los coeficientes que son solución a un sistema de ecuaciones homogéneos, por lo cual se usará la función `solve()`.
+```{r}
+solve(p)
+```
+- $A^{-1} \cdot B^{t}$: El razonamiento es análogo.
+```{r}
+solve(A)%*%t(B)
+```
+
+2. Considerar en un vector los números de vuestro DNI y llamarlo dni. Por ejemplo, mi DNI es 00523821F, vuestro vector será
+$$dni = (0,0,5,2,3,8,2,1,F)$$.
+Definir el vector en R. Calcular con R el vector dni al cuadrado, la raíz cuadrada del vector dni y, por último, la suma de todas las cifras del vector dni. Finalmente, escribir todos estos vectores también a $\LaTeX$.
+**Solución:** Construyamos, primero, el vector con mi *dni*.
+```{r}
+dni = c(0,0,5,2,3,8,2,1)
+dni
+```
+En $\LaTeX: \, \, dni=(0, 0, 5, 2, 3, 8, 2, 1)$
+
+Obtengamos el *dni* al cuadrado:
+```{r}
+dni^2
+```
+En $\LaTeX: \, \, dni=(0, 0, 25, 4, 9, 64, 4, 1)$
+
+La raíz cuadrada del _dni_:
+```{r}
+round(sqrt(dni), 3)
+```
+En $\LaTeX: \, \, dni=(0.000, 0.000, 2.236, 1.414, 1.732, 2.828, 1.414, 1.000)$
+
+```{r}
+cumsum(dni)
+```
+En $\LaTeX: \, \, dni=(0, 0, 5, 7, 10, 18, 20, 21)$
+
+3. Considerar el vector de las letras de su nombre y apellido. Llamarlo name. Definir dicho vector en R. Calcular el subvector que solo contenga el nombre. Calcular también el subvector que contenga solo el apellido. Ordenarlo alfabéticamente. Crear una matriz con este vector.
+**Solución:** Construyamos el vector `name`.
+```{r}
+name = c("E","R","N","E","S","T","O", "W","A","N","G")
+name
+```
+
+Obtengamos el subvector que contiene solo el nombre:
+```{r}
+name[1:str_length("Ernesto")]
+```
+
+Ahora el subvector que contiene el apellido. Guardaremos el subvector en otra variable para construir la matriz de manera más cómoda.
+```{r}
+ape = name[(str_length("Ernesto")+1):length(name)]
+ape
+```
+Ahora ordenemos el vector `ape`:
+```{r}
+ape_s = sort(ape)
+ape_s
+```
+Por último, creemos una matriz con este vector:
+```{r}
+matrix(ape_s, nrow = 2)
+```

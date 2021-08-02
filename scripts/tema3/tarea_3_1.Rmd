@@ -1,0 +1,123 @@
+---
+title: "Tarea 3"
+author: "Tony"
+output: html_document
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+```{r}
+# Librerías
+library(Biodem)
+library(Matrix)
+```
+
+1. Crear un vector llamado "Harry" formado por la sucesión de números consecutivos entre el -10 y 27. Pedirle a R que devuelva el elemento de índice 7. Escribie el resultado.
+```{r}
+Harry <- -10:27
+Harry
+Harry[7]
+```
+
+2. Dar el máximo de la sucesión $100\times 2^n -7\times 3^n$ con $n=0,\cdots,200$.
+```{r}
+n <- seq(0,200, by = 1)
+suc <- 100*2^(n) - 7*3^(n)
+max(suc)
+```
+
+3. Crear la sucesión de números consecutivos entre 0 y 40. A continuación, crear el vector $3\times 5^n - 1$ con $n=0,\cdots,40$. Ponerle como nombre x. Ahora, dar el subvector de los elementos que son estrictamente mayores que 3.5.
+```{r}
+n <- 0:40
+x <- 3*5^(n) - 1
+x[x > 3.5]
+```
+
+4. Crear una función que devuelva la parte real, la imaginaria, el módulo, el argumento y el conjugado de un número, mostrando solo 2 cifras significativas.
+**RECOMENDACIÓN:** En algún momento hará falta utilizar vectores.
+```{r}
+prob_4 <- function(z){
+  round(vec_c <- c(Re(z), Im(z), Mod(z), Arg(z), Conj(z)), 2)
+}
+# Veamos si funciona
+prob_4(3+4i)
+```
+
+5. Crear una función que resuelva ecuaciones de segundo grado (de la forma $Ax^2+Bx+C=0$). No importa, por ahora, tener en cuenta las que no tienen solución.
+**RECOMENDACIÓN:** En algún momento os hará falta utilizar vectores.
+```{r}
+prob_5 <- function(a,b,c){
+  aux = sqrt(as.complex(b^(2) - 4*a*c))
+  sol_1 = (-b + aux)/2
+  sol_2 = (-b - aux)/2
+  sol = c(sol_1,sol_2)
+  
+  sol
+}
+prob_5(1,2,1)
+```
+
+6. Tomando el vector `vec = c(0,9,98,2,6,7,5,19,88,20,16,0)`, dar 3 opciones diferentes para calcular el subvector `c(9,19,20,16)`.
+```{r}
+vec = c(0,9,98,2,6,7,5,19,88,20,16,0)
+# 1:
+vec[c(2,8,10,11)]
+# 2:
+vec[vec >= 9 & vec <= 20]
+# 3:
+vec[!(vec < 9 | vec > 20)]
+```
+
+
+7. Tomando el vector vec definido en el apartado anterior, buscar
+    - qué entradas son pares.
+    - qué entradas no son pares y mayores que 20.
+    - dónde toma vec su valor máximo.
+    - dónde toma vec sus valores mínimos.
+```{r}
+# a:
+vec[vec%%2==0]
+# b:
+vec[vec%%2==1 & vec>20]
+# c:
+which(vec == max(vec))
+# d:
+which(vec == min(vec))
+```
+
+8. Los problemas de la lista  de ejercicios _EjerciciosT3.pdf_.
+
+- **Ejercicio 1:**
+```{r}
+A <- matrix(c(1,2, 3,4), nrow = 2)
+A
+(A%*%(A+A)%*%A)[2,2]
+```
+
+- **Ejercicio 2:**
+  
+```{r}
+B <- matrix(c(2,4,-6, 0,0,3, 0,-2,5), nrow = 3, byrow = T)
+B
+eigen(B)$values
+```  
+
+- **Ejercicio 3:**
+```{r}
+C <- matrix(c(-48,-134,-194, 35,95,133, -12,-32,-44), nrow = 3)
+C
+round(eigen(C)$vectors, 3)
+```
+
+- **Ejercicio 4:**
+    
+```{r}
+D <- matrix(c(-2,-3,-9,-18, -8,-6,-22,-44, -2,-1,-3,-8, 3,2,7,15), nrow = 4)
+D
+rnk = rankMatrix(D)
+attr(rnk, "method")=NULL
+attr(rnk, "useGrad")=NULL
+attr(rnk, "tol")=NULL
+rnk
+```

@@ -1,0 +1,145 @@
+---
+title: "Álgebra lineal"
+author: "Tony"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+```{r}
+# Librerías
+library(Biodem)
+library(Matrix)
+```
+
+## Operaciones
+
+- `t(matriz)`: para obtener la transpuesta de la matriz
+- `+`: para sumar matrices
+- `*`: para el producto de un escalar por una matriz
+- `%*%`: para multiplicar matrices
+- `mtx.exp(matriz,n)`: para elevar la matriz a $n$
+    - Del paquete `Biodem`
+		- No calcula las potencias exactas, las aproxima
+- `%^%`: para elevar matrices
+    - Del paquete `expm`
+		- No calcula las potencias exactas, las aproxima
+```{r}
+# La matriz con la que se trabajará es la sigueinte:
+M = matrix(1:12, nrow = 5)
+M
+# Y una auxiliar es la siguiente
+A <- matrix(1:9, nrow = 3)
+A
+# Trans
+t(M)
+# Producto por escalar
+3*M
+# Producto usual entre matrices
+M%*%t(M)
+# Producto entrada a entrada  entre matrices}
+M*M
+# Elevemos la matriz A a la tarcera potencia de dos maneras distintas
+# 1:
+mtx.exp(A,3)
+# 2:
+A%^%3
+```
+**Ejemplo:** Observaremos qué ocurre si, siendo $A = \begin{pmatrix}
+2 & 0 & 2\\
+1 & 2 & 3\\
+0 & 1 & 3
+\end{pmatrix}$ y $B = \begin{pmatrix}
+3 & 2 & 1\\
+1 & 0 & 0\\
+1 & 1 & 1
+\end{pmatrix}$, realizamos las operaciones $A*B$, $A^2$ y $B^3$
+```{r}
+# A:
+A <- matrix(c(2,0,2, 1,2,3, 0,1,3), nrow = 3)
+A
+# B:
+B <- matrix(c(3,2,1, 1,0,0, 1,1,1), nrow = 3)
+B
+# A*B:
+A*B
+# A^2:
+A%^%2
+# B^3:
+mtx.exp(B,3)
+```
+
+## Operaciones			
+			
+- `det(matriz)`: para calcular el determinante de la matriz
+- `qr(matriz)$rank`: para calcular el rango de la matriz
+- `solve(matriz)`: para calcular la inversa de una matriz invertible
+    - También sirve para resolver sistemas de ecuaciones lineales. Para ello introducimos `solve(matriz,b)`, donde $b$ es el vector de términos independientes
+```{r}
+# Para estos ejemplos, se usará una matriz cuadrada para no obtener error.
+# Determinante:
+det(A)
+# Rango de M:
+qr(A)$rank
+# Obtengamos la matriz inversa de A puesto que det|A|!=0, tambien es equivalente a hallar los coeficientes de un sistema l.d:
+solve(A)
+# Mostremos que el producto usual de la matriz A con su inversa es la identidad:
+round(solve(A)%*%A,2)
+# Resolvamos un sistema de ecuaciones representado por A y b=(2,3,4):
+solve(A, c(2,3,4))
+```
+    
+    
+## Valores y vectores propios
+
+[Vector propio y valor propio](https://es.wikipedia.org/wiki/Vector_propio_y_valor_propio)
+
+- `eigen(matriz)`: para calcular los valores (vaps) y vectores propios (veps)
+    - `eigen(matriz)$values`: nos da el vector con los vaps de la matriz en orden decreciente de su valor absoluto y repetidos tantas veces como su multiplicidad algebraica.
+    - `eigen(matriz)$vectors`: nos da una matriz cuyas columnas son los veps de la matriz.
+```{r}
+# La matriz con la que se trabajara es la siguiente:
+A
+# Valores y vectores propios:
+eigen(A)
+# Valores propios:
+eigen(A)$values
+# Vectores propios:
+eigen(A)$vectors
+# Se aprecia que hay un valor propio de multiplicidad algebraica dos
+```
+**Ejercicio:** Comprobar, con los datos del ejemplo anterior, que si $P$ es la matriz de vectores propios de $A$ en columna y $D$ la matriz diagonal cuyas entradas son los valores propios de $A$, entoces se cumple la siguiente igualdad llamarla **descomposición canónica**: $$A = P\cdot D\cdot P^{-1}$$.
+```{r}
+A = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+A
+# Matriz de vectores propios P:
+P <- eigen(A)$vectors
+P
+# Matriz de valores propios D:
+D <- diag(eigen(A)$values)
+D
+# Producto matricial P.D.P^-1:
+A_2 <- P%*%(D%*%solve(P))
+A_2
+```
+Claramente se cumple la relación.
+
+## Matrices con entradas complejas
+
+También se pueden obtener los valores y vectores propios, como en los ejemplos anteriores, de matrices con entradas en los complejos:
+```{r}
+B = matrix(c(3-2i,5+3i,1+2i,2-1i), nrow = 2, byrow = T)
+B
+# Multiplicación usual:
+B%*%B
+# Vectores y valores propios:
+eigen(B)
+# Inversa, puesto que det(B)!=0:
+solve(B)
+# Determinante: Como en R det(B) noe stá definido para los complejos, se tomará una identidad para el determinante, la cual es el producto de los valores propios.
+prod(eigen(B)$values)
+```
+

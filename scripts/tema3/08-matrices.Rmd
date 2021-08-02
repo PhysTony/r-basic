@@ -13,7 +13,7 @@ output: html_document
     - R muestra las matrices indicando como [$i,$] la fila $i$-ésima y [$,j$] la columna $j$-ésima.
 	- Todas las entradas de una matriz han de ser del mismo tipo de datos.
 
-**Ejemplo:** CReemos matrices de distintos tamaños.
+**Ejemplo:** Creemos matrices de distintos tamaños.
 ```{r}
 # Por columnas:
 M <- matrix(1:12, nrow = 4)

@@ -21,5 +21,8 @@ library(reticulate)
 install.packages('Matrix', dep = TRUE)
 library(Matrix)
 
+install.packages("Biodem", dependencies = TRUE)
+library(Biodem)
+
 # Ver paquetes instalados
 installed.packages()
