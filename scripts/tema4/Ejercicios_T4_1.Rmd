@@ -1,0 +1,39 @@
+---
+title: "Tarea 6"
+author: "Tony"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+1. Con una sola instrucción, dibujad el gráfico de la función $y=x^2−3x+30$ entre −15 y 15. De título, poned “Una parábola”. De etiquetas, en el eje $X$ poned, en formato matemático, "x"; y en el eje $Y$, introducid $y=x^2−3x+30$, también en formato matemático. Tenéis que utilizar la función `curve()`.
+```{r}
+y_1 <- function(x){x^2 - 3*x + 30}
+curve(y_1, xlim = c(-15,15),
+     xlab = expression(x), ylab = expression(x^2 - 3*x + 30)) # Es lo mismo si se usa plot()
+```
+
+
+2. Considerando lo que habéis obtenido en el ejercicio anterior y siendo $y = f(x) = x^2−3x+30$ e $I = [-15:15]$, si en vez de utilizar la función `curve()`, utilizamos la función `plot()`, ¿es correcta la sentencia `plot(f(I))` para representar la curva $f$ en el intervalo $I$? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia `plot(f(I))` se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función $f$ en *R* y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+
+**R:** En este caso, habrá diferencia ya que se graficarán puntos, en aprticular, 31.
+```{r}
+y_1 <- function(x){x^2 - 3*x + 30}
+plot(y_1(c(-15:15)), 
+     xlab = expression(x), ylab = expression(x^2 - 3*x + 30))
+```
+
+3. Dibuja un gráfico semilogarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función `curve()`. Mostrad solo la etiqueta del eje $Y$, que ponga "$y = 5\cdot 2^x$" en formato matemático.
+
+4. Dibuja el gráfico de la función $y_1 = 3x$ utilizando la función `curve()`. Añade la curva $y_2=-3x$, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto $(13,10)$) que indique que la función $3x$ es la azul y la $-3x$ verde.
+
+5. Dad la instrucción que añada a un gráfico anterior la recta horizontal $y = 0$ de color rojo con un grosor de 5 puntos.
+
+6. Dad la instrucción que añada a un gráfico anterior la recta $y = 2x+7$ de color azul con un grosor de 2. puntos.
