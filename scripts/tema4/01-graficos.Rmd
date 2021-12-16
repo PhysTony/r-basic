@@ -36,7 +36,7 @@ notas = c(2,5,7,9,8,3,5,6,10,7)
 plot(alumnos,notas)
 ```
 
-Si no incorporamos vector `y`, `R` nos va a tomar el parámetro `x` como si fuese el vector de datos `y`:
+Si no incorporamos vector `y`, `R` nos va a tomar el parámetro `x` como si fuese el vector de datos `y` y la variable independiente una sucesión sobre los naturales:
 ```{r fig.cap="Gráfico discreto", fig.align='center'}
 plot(2^(1:6))
 ```
@@ -114,7 +114,7 @@ Con el parámetro `log` y el eje se puede indicar en cuáles ejes se aplciará u
 ```{r, fig.align='center'}
 n = 1:20
 fib = (1/sqrt(5))*((1+sqrt(5))/2)^n - (1/sqrt(5))*((1-sqrt(5))/2)^n
-plot(fib, xlab = "n", ylab = expression(F[n]),
+plot(fib, xlab = "n", ylab = expression(log(F[n])),
      main = "Sucesión de Fibonacci", pch = 21, cex = 2,
      col = "firebrick4", bg = "darkturquoise", log = "y")
 ```
